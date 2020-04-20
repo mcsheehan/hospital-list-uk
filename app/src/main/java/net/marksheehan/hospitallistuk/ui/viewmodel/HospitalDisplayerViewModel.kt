@@ -40,8 +40,8 @@ class HospitalDisplayerViewModel : ViewModel() {
     val hospitalDataSource : LiveData<List<HospitalInfo>> = Transformations.switchMap(filterClicked){
         val result : MutableLiveData<List<HospitalInfo>>
         if(it) {
-            val a = allHospitalInfo.value?.filter {it.Sector == SectorTypes.NHS.sectorType}
-            result = MutableLiveData(a!!)
+            val filteredHospitalList = allHospitalInfo.value?.filter {it.Sector == SectorTypes.NHS.sectorType}
+            result = MutableLiveData(filteredHospitalList!!)
         }
         else{
             result = allHospitalInfo
